@@ -1,0 +1,144 @@
+    # mRNA translation
+    => mRNA1; L1 + Vm1*((K1_1*INPUT^H1 + K2_1*P4^H1 + K1_1*K3_1*INPUT^H1*P4^H1) / (1 + K1_1*INPUT^H1 + K2_1*P4^H1 + K1_1*K3_1*INPUT^H1*P4^H1));
+    => mRNA2; L2 + Vm2*(K1_2*P4^H2 / (1 + K1_2*P4^H2 + K2_2*P2^H2 + K1_2*K2_2*P2^H2*P4^H2));
+    => mRNA3; L3 + Vm3*(K1_3*P6^H3 / (1 + K1_3*P6^H3));
+    => mRNA4; L4 + Vm4*(1 / (1 + K1_4*P2^H4 + K2_4*P5^H4 + K1_4*K3_4*P2^H4*P5^H4));
+    => mRNA5; L5 + Vm5*(K1_5*P6^H5 / (1 + K1_5*P6^H5));
+    => mRNA6; L6 + Vm6*(K1_6*P7^H6 / (1 + K1_6*P7^H6 + K2_6*P1^H6 + K1_6*K2_6*P1^H6*P7^H6));
+    => mRNA7; L7 + Vm7*(1 / (1 + K1_7*P8^H7));
+    => mRNA8; L8 + Vm8*(1 / (1 + K1_8*P1^H8 + K2_8*P7^H8 + K1_8*K3_8*P1^H8*P7^H8));
+  
+    # mRNA degradation
+    mRNA1 => ; d_mRNA1*mRNA1;
+    mRNA2 => ; d_mRNA2*mRNA2;
+    mRNA3 => ; d_mRNA3*mRNA3;
+    mRNA4 => ; d_mRNA4*mRNA4;
+    mRNA5 => ; d_mRNA5*mRNA5;
+    mRNA6 => ; d_mRNA6*mRNA6;
+    mRNA7 => ; d_mRNA7*mRNA7;
+    mRNA8 => ; d_mRNA8*mRNA8;
+    
+    # protein translation
+    => P1; a_protein1*mRNA1;
+    => P2; a_protein2*mRNA2;
+    => P3; a_protein3*mRNA3;
+    => P4; a_protein4*mRNA4;
+    => P5; a_protein5*mRNA5;
+    => P6; a_protein6*mRNA6;
+    => P7; a_protein7*mRNA7;
+    => P8; a_protein8*mRNA8;
+    
+    # protein degradation
+    P1 => ; d_protein1*P1;
+    P2 => ; d_protein2*P2;
+    P3 => ; d_protein3*P3;
+    P4 => ; d_protein4*P4;
+    P5 => ; d_protein5*P5;
+    P6 => ; d_protein6*P6;
+    P7 => ; d_protein7*P7;
+    P8 => ; d_protein8*P8;
+    
+    # initial concentrations
+    INPUT = 1;
+    mRNA1 = 0;
+    mRNA2 = 0;
+    mRNA3 = 0;
+    mRNA4 = 0;
+    mRNA5 = 0;
+    mRNA6 = 0;
+    mRNA7 = 0;
+    mRNA8 = 0;
+    P1 = 0;
+    P2 = 0;
+    P3 = 0;
+    P4 = 0;
+    P5 = 0;
+    P6 = 0;
+    P7 = 0;
+    P8 = 0;
+    
+    # parameters
+    L1 = 0.0284569399501349;
+    L2 = 0.01126375;
+    L3 = 0.0108824170117358;
+    L4 = 0.0142166568749038;
+    L5 = 0.0124824037745626;
+    L6 = 0.0166516087433626;
+    L7 = 0.0178636133026099;
+    L8 = 0.0165535374304033;
+    
+    Vm1 = 1.16380673480284;
+    Vm2 = 0.855433454948057;
+    Vm3 = 1.61383118795785;
+    Vm4 = 0.916251896011744;
+    Vm5 = 0.9167186340378028; # fitted
+    Vm6 = 0.889302076744445;
+    Vm7 = 1.4775023746542497; # fitted
+    Vm8 = 0.87881445337468;
+    
+    d_mRNA1 = 0.600013;
+    d_mRNA2 = 0.607263145327485;
+    d_mRNA3 = 1.4096553751623;
+    d_mRNA4 = 1.19069657063437;
+    d_mRNA5 = 0.911653907722886;
+    d_mRNA6 = 0.67287496171115;
+    d_mRNA7 = 0.618711430584466;
+    d_mRNA8 = 1.17483328491068;
+    
+    a_protein1 = 0.089105566248939;
+    a_protein2 = 0.0825104648147814;
+    a_protein3 = 0.118672807163739;
+    a_protein4 = 0.0862964088164644;
+    a_protein5 = 0.106293056264931;
+    a_protein6 = 0.0890528700251159;
+    a_protein7 = 0.0764169841455256;
+    a_protein8 = 0.103749989801903;
+    
+    d_protein1 = 0.01576525;
+    d_protein2 = 0.0100753359178861;
+    d_protein3 = 0.0165270958726424;
+    d_protein4 = 0.0205716618573404;
+    d_protein5 = 0.0180685727313577;
+    d_protein6 = 0.0178004316181647;
+    d_protein7 = 0.0206180615545929;
+    d_protein8 = 0.0131749080364666;
+    
+    # mRNA1 (fully known)
+    H1 = 4.52340391321994;
+    K1_1 = 0.0269204907071558;
+    K2_1 = 0.0169635567504703;
+    K3_1 = 0.0114278645720656;
+    
+    # mRNA2 (partially known)
+    H2 = 3.21939257313515;
+    K1_2 = 0.0170170903653747;
+    K2_2 = 0.01; # fitted
+    
+    # mRNA3 (partially known)
+    H3 = 4.57189341195625;
+    K1_3 = 0.0133069236136431;
+    
+    # mRNA4 (partially known)
+    H4 = 5.00512303222327;
+    K1_4 = 0.0179894288457716;
+    K2_4 = 0.016845150801881946; # fitted
+    K3_4 = 0.01991907317992471; # fitted
+    
+    # mRNA 5 (fully unknown)
+    H5 = 3.7033926080352444; # fitted
+    K1_5 = 0.023025286249435378; # fitted
+    
+    # mRNA6 (fully known)
+    H6 = 5.58112408673455;
+    K1_6 = 0.0139445776013774;
+    K2_6 = 0.0121764364668572;
+    
+    # mRNA7 (fully unknown)
+    H7 = 3.5230017323544534; # fitted
+    K1_7 = 0.011344375364800022; # fitted
+    
+    # mRNA8 (partially known)
+    H8 = 2.17775388441324;
+    K1_8 = 0.0168599518440462;
+    K2_8 = 0.012470037814671847; # fitted
+    K3_8 = 0.020519681925885457; # fitted
